@@ -1,0 +1,5 @@
+int resultado = 2 + 3;
+int x = 10;
+int y = x * 1 + 0;
+float area = 3.5 * 2 * x;
+int z = (4 * 5) + (x - 0);

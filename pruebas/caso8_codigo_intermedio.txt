@@ -1,0 +1,6 @@
+int a = 4;
+int b = 6;
+int c = 2;
+int resultado = 0;
+resultado = (a + b) * c;
+int r2 = a * b + c / 2 - a;

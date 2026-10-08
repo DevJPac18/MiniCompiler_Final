@@ -1,0 +1,144 @@
+
+===============================================
+  CODIGO FUENTE
+===============================================
+  1 | int a = 5;
+  2 | int b = 3;
+  3 | float precio = 12.5;
+  4 | string producto = "Lapiz";
+  5 | int c = a + b;
+  6 | float total = precio * c;
+
+===============================================
+  1. ANALISIS LEXICO
+===============================================
+--------TOKENS ENCONTRADOS---------
+<PALABRA_CLAVE, int>  (linea 1, col 1)
+<IDENTIFICADOR, a>  (linea 1, col 5)
+<ASIGNACION, =>  (linea 1, col 7)
+<LITERAL_ENTERO, 5>  (linea 1, col 9)
+<DELIMITADOR, ;>  (linea 1, col 10)
+<PALABRA_CLAVE, int>  (linea 2, col 1)
+<IDENTIFICADOR, b>  (linea 2, col 5)
+<ASIGNACION, =>  (linea 2, col 7)
+<LITERAL_ENTERO, 3>  (linea 2, col 9)
+<DELIMITADOR, ;>  (linea 2, col 10)
+<PALABRA_CLAVE, float>  (linea 3, col 1)
+<IDENTIFICADOR, precio>  (linea 3, col 7)
+<ASIGNACION, =>  (linea 3, col 14)
+<LITERAL_REAL, 12.5>  (linea 3, col 16)
+<DELIMITADOR, ;>  (linea 3, col 20)
+<PALABRA_CLAVE, string>  (linea 4, col 1)
+<IDENTIFICADOR, producto>  (linea 4, col 8)
+<ASIGNACION, =>  (linea 4, col 17)
+<LITERAL_STRING, "Lapiz">  (linea 4, col 19)
+<DELIMITADOR, ;>  (linea 4, col 26)
+<PALABRA_CLAVE, int>  (linea 5, col 1)
+<IDENTIFICADOR, c>  (linea 5, col 5)
+<ASIGNACION, =>  (linea 5, col 7)
+<IDENTIFICADOR, a>  (linea 5, col 9)
+<OPERADOR, +>  (linea 5, col 11)
+<IDENTIFICADOR, b>  (linea 5, col 13)
+<DELIMITADOR, ;>  (linea 5, col 14)
+<PALABRA_CLAVE, float>  (linea 6, col 1)
+<IDENTIFICADOR, total>  (linea 6, col 7)
+<ASIGNACION, =>  (linea 6, col 13)
+<IDENTIFICADOR, precio>  (linea 6, col 15)
+<OPERADOR, *>  (linea 6, col 22)
+<IDENTIFICADOR, c>  (linea 6, col 24)
+<DELIMITADOR, ;>  (linea 6, col 25)
+
+-------- ERRORES LEXICOS --------
+No se encontraron errores lexicos.
+
+===============================================
+  2. ANALISIS SINTACTICO
+===============================================
+No se encontraron errores sintacticos.
+
+Instrucciones sintacticamente correctas: 6
+
+===============================================
+  3. ANALISIS SEMANTICO
+===============================================
+No se encontraron errores semanticos.
+
+-------- TABLA DE SIMBOLOS --------
+Nombre         Tipo      Declarada en
+-----------------------------------------
+a              int       linea 1, col 5
+b              int       linea 2, col 5
+precio         float     linea 3, col 7
+producto       string    linea 4, col 8
+c              int       linea 5, col 5
+total          float     linea 6, col 7
+
+===============================================
+  4. CODIGO INTERMEDIO (TRES DIRECCIONES)
+===============================================
+[linea 1] a = ...
+   Postfija        : 5
+   Tres direcciones:
+      a = 5
+
+[linea 2] b = ...
+   Postfija        : 3
+   Tres direcciones:
+      b = 3
+
+[linea 3] precio = ...
+   Postfija        : 12.5
+   Tres direcciones:
+      precio = 12.5
+
+[linea 4] producto = ...
+   Postfija        : "Lapiz"
+   Tres direcciones:
+      producto = "Lapiz"
+
+[linea 5] c = ...
+   Postfija        : a b +
+   Tres direcciones:
+      t1 = a + b
+      c = t1
+
+[linea 6] total = ...
+   Postfija        : precio c *
+   Tres direcciones:
+      t2 = precio * c
+      total = t2
+
+
+===============================================
+  5. OPTIMIZACION
+===============================================
+Antes (8 instrucciones):
+   a = 5
+   b = 3
+   precio = 12.5
+   producto = "Lapiz"
+   t1 = a + b
+   c = t1
+   t2 = precio * c
+   total = t2
+
+Despues (6 instrucciones):
+   a = 5
+   b = 3
+   precio = 12.5
+   producto = "Lapiz"
+   c = a + b
+   total = precio * c
+
+Mejoras aplicadas:
+   - Eliminacion de copia:      t1 = a + b ; c = t1   ->   c = a + b
+   - Eliminacion de copia:      t2 = precio * c ; total = t2   ->   total = precio * c
+
+===============================================
+  RESUMEN
+===============================================
+Errores lexicos     : 0
+Errores sintacticos : 0
+Errores semanticos  : 0
+
+Resultado: Programa compilado correctamente.

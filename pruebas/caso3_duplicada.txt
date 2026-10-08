@@ -1,0 +1,2 @@
+int edad = 20;
+int edad = 30;

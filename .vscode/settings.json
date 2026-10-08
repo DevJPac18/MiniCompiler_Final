@@ -1,0 +1,9 @@
+{
+    // Extension "C/C++ Compile Run" (boton Run de arriba a la derecha):
+    // compila main.cpp junto con los demas .cpp del proyecto
+    "c-cpp-compile-run.cpp-flags": "-std=c++11 -Wall -Wextra -g3",
+    "c-cpp-compile-run.cpp-linker-flags": "Lexer.cpp Parser.cpp Semantico.cpp CodigoIntermedio.cpp Optimizador.cpp",
+
+    // Siempre recompilar (si no, no detecta cambios en Lexer.cpp, Parser.cpp, etc.)
+    "c-cpp-compile-run.skip-if-compiled": false
+}

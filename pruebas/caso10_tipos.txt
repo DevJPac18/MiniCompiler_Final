@@ -1,0 +1,8 @@
+int edad = 20;
+string nombre = "Ana";
+int numero = "1";
+float dato = "10.5";
+string texto = 25;
+int entero = 3.7;
+string suma = nombre + "Perez";
+float ok = edad / 2;

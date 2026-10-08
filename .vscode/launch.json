@@ -1,0 +1,51 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Ejecutar compilador (teclado)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/compilador.exe",
+            "args": [],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "gdb",
+            "preLaunchTask": "Compilar"
+        },
+        {
+            "name": "Ejecutar compilador (caso de prueba)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/compilador.exe",
+            "args": ["${input:casoPrueba}", "--pausa"],
+            "cwd": "${workspaceFolder}",
+            "stopAtEntry": false,
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "gdb",
+            "preLaunchTask": "Compilar"
+        }
+    ],
+    "inputs": [
+        {
+            "id": "casoPrueba",
+            "type": "pickString",
+            "description": "Seleccione el caso de prueba",
+            "options": [
+                "pruebas/caso1_int_float.txt",
+                "pruebas/caso2_string.txt",
+                "pruebas/caso3_duplicada.txt",
+                "pruebas/caso4_no_declarada.txt",
+                "pruebas/caso5_error_sintactico.txt",
+                "pruebas/caso6_error_lexico.txt",
+                "pruebas/caso7_varias_lineas.txt",
+                "pruebas/caso8_codigo_intermedio.txt",
+                "pruebas/caso9_optimizacion.txt",
+                "pruebas/caso10_tipos.txt"
+            ],
+            "default": "pruebas/caso8_codigo_intermedio.txt"
+        }
+    ]
+}

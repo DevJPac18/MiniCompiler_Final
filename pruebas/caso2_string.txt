@@ -1,0 +1,4 @@
+string nombre = "Ana";
+string dato = "10.5";
+string numero = "1";
+string ciudad = "Arequipa";

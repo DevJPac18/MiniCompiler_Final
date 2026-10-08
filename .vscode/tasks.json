@@ -1,0 +1,124 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compilar",
+            "detail": "Compila todos los .cpp del proyecto en compilador.exe",
+            "type": "cppbuild",
+            "command": "g++",
+            "args": [
+                "-std=c++11",
+                "-g",
+                "-Wall",
+                "-o",
+                "${workspaceFolder}/compilador.exe",
+                "${workspaceFolder}/main.cpp",
+                "${workspaceFolder}/Lexer.cpp",
+                "${workspaceFolder}/Parser.cpp",
+                "${workspaceFolder}/Semantico.cpp",
+                "${workspaceFolder}/CodigoIntermedio.cpp",
+                "${workspaceFolder}/Optimizador.cpp"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": ["$gcc"],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "presentation": {
+                "reveal": "silent",
+                "clear": true
+            }
+        },
+        {
+            "label": "Ejecutar (escribir codigo por teclado)",
+            "detail": "Compila y ejecuta; escriba el codigo y termine con una linea FIN",
+            "type": "process",
+            "command": "${workspaceFolder}/compilador.exe",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "dependsOn": "Compilar",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "panel": "dedicated",
+                "clear": true
+            }
+        },
+        {
+            "label": "Ejecutar caso de prueba",
+            "detail": "Compila y ejecuta un archivo de la carpeta pruebas",
+            "type": "process",
+            "command": "${workspaceFolder}/compilador.exe",
+            "args": ["${input:casoPrueba}"],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "dependsOn": "Compilar",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "panel": "dedicated",
+                "clear": true
+            }
+        },
+        {
+            "label": "Ejecutar archivo abierto",
+            "detail": "Compila y analiza el archivo .txt que esta abierto en el editor",
+            "type": "process",
+            "command": "${workspaceFolder}/compilador.exe",
+            "args": ["${file}"],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "dependsOn": "Compilar",
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "focus": true,
+                "panel": "dedicated",
+                "clear": true
+            }
+        },
+        {
+            "label": "Ejecutar todas las pruebas",
+            "detail": "Corre todos los casos y guarda las salidas en pruebas/salidas",
+            "type": "process",
+            "command": "${env:ComSpec}",
+            "args": ["/c", "${workspaceFolder}\\ejecutar_pruebas.bat"],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "always",
+                "clear": true
+            }
+        }
+    ],
+    "inputs": [
+        {
+            "id": "casoPrueba",
+            "type": "pickString",
+            "description": "Seleccione el caso de prueba",
+            "options": [
+                "pruebas/caso1_int_float.txt",
+                "pruebas/caso2_string.txt",
+                "pruebas/caso3_duplicada.txt",
+                "pruebas/caso4_no_declarada.txt",
+                "pruebas/caso5_error_sintactico.txt",
+                "pruebas/caso6_error_lexico.txt",
+                "pruebas/caso7_varias_lineas.txt",
+                "pruebas/caso8_codigo_intermedio.txt",
+                "pruebas/caso9_optimizacion.txt",
+                "pruebas/caso10_tipos.txt"
+            ],
+            "default": "pruebas/caso8_codigo_intermedio.txt"
+        }
+    ]
+}

@@ -1,0 +1,4 @@
+int edad = 20
+float = 15.5;
+int x = (4 + 2;
+int valido = 7;

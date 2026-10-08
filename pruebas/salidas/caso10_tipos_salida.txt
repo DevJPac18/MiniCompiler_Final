@@ -1,0 +1,133 @@
+
+===============================================
+  CODIGO FUENTE
+===============================================
+  1 | int edad = 20;
+  2 | string nombre = "Ana";
+  3 | int numero = "1";
+  4 | float dato = "10.5";
+  5 | string texto = 25;
+  6 | int entero = 3.7;
+  7 | string suma = nombre + "Perez";
+  8 | float ok = edad / 2;
+
+===============================================
+  1. ANALISIS LEXICO
+===============================================
+--------TOKENS ENCONTRADOS---------
+<PALABRA_CLAVE, int>  (linea 1, col 1)
+<IDENTIFICADOR, edad>  (linea 1, col 5)
+<ASIGNACION, =>  (linea 1, col 10)
+<LITERAL_ENTERO, 20>  (linea 1, col 12)
+<DELIMITADOR, ;>  (linea 1, col 14)
+<PALABRA_CLAVE, string>  (linea 2, col 1)
+<IDENTIFICADOR, nombre>  (linea 2, col 8)
+<ASIGNACION, =>  (linea 2, col 15)
+<LITERAL_STRING, "Ana">  (linea 2, col 17)
+<DELIMITADOR, ;>  (linea 2, col 22)
+<PALABRA_CLAVE, int>  (linea 3, col 1)
+<IDENTIFICADOR, numero>  (linea 3, col 5)
+<ASIGNACION, =>  (linea 3, col 12)
+<LITERAL_STRING, "1">  (linea 3, col 14)
+<DELIMITADOR, ;>  (linea 3, col 17)
+<PALABRA_CLAVE, float>  (linea 4, col 1)
+<IDENTIFICADOR, dato>  (linea 4, col 7)
+<ASIGNACION, =>  (linea 4, col 12)
+<LITERAL_STRING, "10.5">  (linea 4, col 14)
+<DELIMITADOR, ;>  (linea 4, col 20)
+<PALABRA_CLAVE, string>  (linea 5, col 1)
+<IDENTIFICADOR, texto>  (linea 5, col 8)
+<ASIGNACION, =>  (linea 5, col 14)
+<LITERAL_ENTERO, 25>  (linea 5, col 16)
+<DELIMITADOR, ;>  (linea 5, col 18)
+<PALABRA_CLAVE, int>  (linea 6, col 1)
+<IDENTIFICADOR, entero>  (linea 6, col 5)
+<ASIGNACION, =>  (linea 6, col 12)
+<LITERAL_REAL, 3.7>  (linea 6, col 14)
+<DELIMITADOR, ;>  (linea 6, col 17)
+<PALABRA_CLAVE, string>  (linea 7, col 1)
+<IDENTIFICADOR, suma>  (linea 7, col 8)
+<ASIGNACION, =>  (linea 7, col 13)
+<IDENTIFICADOR, nombre>  (linea 7, col 15)
+<OPERADOR, +>  (linea 7, col 22)
+<LITERAL_STRING, "Perez">  (linea 7, col 24)
+<DELIMITADOR, ;>  (linea 7, col 31)
+<PALABRA_CLAVE, float>  (linea 8, col 1)
+<IDENTIFICADOR, ok>  (linea 8, col 7)
+<ASIGNACION, =>  (linea 8, col 10)
+<IDENTIFICADOR, edad>  (linea 8, col 12)
+<OPERADOR, />  (linea 8, col 17)
+<LITERAL_ENTERO, 2>  (linea 8, col 19)
+<DELIMITADOR, ;>  (linea 8, col 20)
+
+-------- ERRORES LEXICOS --------
+No se encontraron errores lexicos.
+
+===============================================
+  2. ANALISIS SINTACTICO
+===============================================
+No se encontraron errores sintacticos.
+
+Instrucciones sintacticamente correctas: 8
+
+===============================================
+  3. ANALISIS SEMANTICO
+===============================================
+Error semantico en linea 3, columna 5: no se puede asignar un valor de tipo string a la variable 'numero' de tipo int.
+Error semantico en linea 4, columna 7: no se puede asignar un valor de tipo string a la variable 'dato' de tipo float.
+Error semantico en linea 5, columna 8: no se puede asignar un valor de tipo int a la variable 'texto' de tipo string.
+Error semantico en linea 6, columna 5: no se puede asignar un valor de tipo float a la variable 'entero' de tipo int.
+Error semantico en linea 7, columna 22: el operador '+' no se puede aplicar a operandos de tipo string.
+
+-------- TABLA DE SIMBOLOS --------
+Nombre         Tipo      Declarada en
+-----------------------------------------
+edad           int       linea 1, col 5
+nombre         string    linea 2, col 8
+ok             float     linea 8, col 7
+
+===============================================
+  4. CODIGO INTERMEDIO (TRES DIRECCIONES)
+===============================================
+[linea 1] edad = ...
+   Postfija        : 20
+   Tres direcciones:
+      edad = 20
+
+[linea 2] nombre = ...
+   Postfija        : "Ana"
+   Tres direcciones:
+      nombre = "Ana"
+
+[linea 8] ok = ...
+   Postfija        : edad 2 /
+   Tres direcciones:
+      t1 = edad / 2
+      ok = t1
+
+
+===============================================
+  5. OPTIMIZACION
+===============================================
+Antes (4 instrucciones):
+   edad = 20
+   nombre = "Ana"
+   t1 = edad / 2
+   ok = t1
+
+Despues (3 instrucciones):
+   edad = 20
+   nombre = "Ana"
+   ok = edad / 2
+
+Mejoras aplicadas:
+   - Eliminacion de copia:      t1 = edad / 2 ; ok = t1   ->   ok = edad / 2
+
+===============================================
+  RESUMEN
+===============================================
+Errores lexicos     : 0
+Errores sintacticos : 0
+Errores semanticos  : 5
+
+Resultado: Se encontraron 5 error(es). Se genero codigo solo para las instrucciones validas.

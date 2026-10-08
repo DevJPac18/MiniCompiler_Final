@@ -1,0 +1,3 @@
+int edad = 20;
+float promedio = 15.5;
+float nota = 18;

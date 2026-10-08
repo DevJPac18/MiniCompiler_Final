@@ -1,0 +1,4 @@
+int x = 10 @ 2;
+int edad = 20;
+string nombre = 'Ana';
+string ciudad = "Arequipa";

@@ -1,0 +1,13 @@
+{
+    "configurations": [
+        {
+            "name": "MinGW",
+            "includePath": ["${workspaceFolder}/**"],
+            "compilerPath": "C:/MinGW/bin/g++.exe",
+            "cStandard": "c11",
+            "cppStandard": "c++11",
+            "intelliSenseMode": "windows-gcc-x86"
+        }
+    ],
+    "version": 4
+}

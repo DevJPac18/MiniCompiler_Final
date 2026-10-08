@@ -1,0 +1,93 @@
+
+===============================================
+  CODIGO FUENTE
+===============================================
+  1 | int edad = 20;
+  2 | float promedio = 15.5;
+  3 | float nota = 18;
+
+===============================================
+  1. ANALISIS LEXICO
+===============================================
+--------TOKENS ENCONTRADOS---------
+<PALABRA_CLAVE, int>  (linea 1, col 1)
+<IDENTIFICADOR, edad>  (linea 1, col 5)
+<ASIGNACION, =>  (linea 1, col 10)
+<LITERAL_ENTERO, 20>  (linea 1, col 12)
+<DELIMITADOR, ;>  (linea 1, col 14)
+<PALABRA_CLAVE, float>  (linea 2, col 1)
+<IDENTIFICADOR, promedio>  (linea 2, col 7)
+<ASIGNACION, =>  (linea 2, col 16)
+<LITERAL_REAL, 15.5>  (linea 2, col 18)
+<DELIMITADOR, ;>  (linea 2, col 22)
+<PALABRA_CLAVE, float>  (linea 3, col 1)
+<IDENTIFICADOR, nota>  (linea 3, col 7)
+<ASIGNACION, =>  (linea 3, col 12)
+<LITERAL_ENTERO, 18>  (linea 3, col 14)
+<DELIMITADOR, ;>  (linea 3, col 16)
+
+-------- ERRORES LEXICOS --------
+No se encontraron errores lexicos.
+
+===============================================
+  2. ANALISIS SINTACTICO
+===============================================
+No se encontraron errores sintacticos.
+
+Instrucciones sintacticamente correctas: 3
+
+===============================================
+  3. ANALISIS SEMANTICO
+===============================================
+No se encontraron errores semanticos.
+
+-------- TABLA DE SIMBOLOS --------
+Nombre         Tipo      Declarada en
+-----------------------------------------
+edad           int       linea 1, col 5
+promedio       float     linea 2, col 7
+nota           float     linea 3, col 7
+
+===============================================
+  4. CODIGO INTERMEDIO (TRES DIRECCIONES)
+===============================================
+[linea 1] edad = ...
+   Postfija        : 20
+   Tres direcciones:
+      edad = 20
+
+[linea 2] promedio = ...
+   Postfija        : 15.5
+   Tres direcciones:
+      promedio = 15.5
+
+[linea 3] nota = ...
+   Postfija        : 18
+   Tres direcciones:
+      nota = 18
+
+
+===============================================
+  5. OPTIMIZACION
+===============================================
+Antes (3 instrucciones):
+   edad = 20
+   promedio = 15.5
+   nota = 18
+
+Despues (3 instrucciones):
+   edad = 20
+   promedio = 15.5
+   nota = 18
+
+Mejoras aplicadas:
+   (ninguna, el codigo ya era optimo)
+
+===============================================
+  RESUMEN
+===============================================
+Errores lexicos     : 0
+Errores sintacticos : 0
+Errores semanticos  : 0
+
+Resultado: Programa compilado correctamente.

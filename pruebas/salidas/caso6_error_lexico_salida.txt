@@ -1,0 +1,104 @@
+
+===============================================
+  CODIGO FUENTE
+===============================================
+  1 | int x = 10 @ 2;
+  2 | int edad = 20;
+  3 | string nombre = 'Ana';
+  4 | string ciudad = "Arequipa";
+
+===============================================
+  1. ANALISIS LEXICO
+===============================================
+--------TOKENS ENCONTRADOS---------
+<PALABRA_CLAVE, int>  (linea 1, col 1)
+<IDENTIFICADOR, x>  (linea 1, col 5)
+<ASIGNACION, =>  (linea 1, col 7)
+<LITERAL_ENTERO, 10>  (linea 1, col 9)
+<DESCONOCIDO, @>  (linea 1, col 12)
+<LITERAL_ENTERO, 2>  (linea 1, col 14)
+<DELIMITADOR, ;>  (linea 1, col 15)
+<PALABRA_CLAVE, int>  (linea 2, col 1)
+<IDENTIFICADOR, edad>  (linea 2, col 5)
+<ASIGNACION, =>  (linea 2, col 10)
+<LITERAL_ENTERO, 20>  (linea 2, col 12)
+<DELIMITADOR, ;>  (linea 2, col 14)
+<PALABRA_CLAVE, string>  (linea 3, col 1)
+<IDENTIFICADOR, nombre>  (linea 3, col 8)
+<ASIGNACION, =>  (linea 3, col 15)
+<DESCONOCIDO, 'Ana'>  (linea 3, col 17)
+<DELIMITADOR, ;>  (linea 3, col 22)
+<PALABRA_CLAVE, string>  (linea 4, col 1)
+<IDENTIFICADOR, ciudad>  (linea 4, col 8)
+<ASIGNACION, =>  (linea 4, col 15)
+<LITERAL_STRING, "Arequipa">  (linea 4, col 17)
+<DELIMITADOR, ;>  (linea 4, col 27)
+
+-------- ERRORES LEXICOS --------
+Lexema: @
+Linea: 1
+Columna: 12
+Mensaje: Caracter no reconocido
+----------------------
+Lexema: 'Ana'
+Linea: 3
+Columna: 17
+Mensaje: Los strings deben escribirse entre comillas dobles
+----------------------
+Total: 2 error(es) lexico(s). El analisis continuo hasta el final del codigo.
+
+===============================================
+  2. ANALISIS SINTACTICO
+===============================================
+Error sintactico en linea 1, columna 11: se esperaba ';' despues de '10'.
+Error sintactico en linea 3, columna 17: se esperaba NUM, REAL, STRING, IDENTIFICADOR o '(', pero se encontro ''Ana''.
+
+Instrucciones sintacticamente correctas: 2
+
+===============================================
+  3. ANALISIS SEMANTICO
+===============================================
+No se encontraron errores semanticos.
+
+-------- TABLA DE SIMBOLOS --------
+Nombre         Tipo      Declarada en
+-----------------------------------------
+edad           int       linea 2, col 5
+ciudad         string    linea 4, col 8
+
+===============================================
+  4. CODIGO INTERMEDIO (TRES DIRECCIONES)
+===============================================
+[linea 2] edad = ...
+   Postfija        : 20
+   Tres direcciones:
+      edad = 20
+
+[linea 4] ciudad = ...
+   Postfija        : "Arequipa"
+   Tres direcciones:
+      ciudad = "Arequipa"
+
+
+===============================================
+  5. OPTIMIZACION
+===============================================
+Antes (2 instrucciones):
+   edad = 20
+   ciudad = "Arequipa"
+
+Despues (2 instrucciones):
+   edad = 20
+   ciudad = "Arequipa"
+
+Mejoras aplicadas:
+   (ninguna, el codigo ya era optimo)
+
+===============================================
+  RESUMEN
+===============================================
+Errores lexicos     : 2
+Errores sintacticos : 2
+Errores semanticos  : 0
+
+Resultado: Se encontraron 4 error(es). Se genero codigo solo para las instrucciones validas.

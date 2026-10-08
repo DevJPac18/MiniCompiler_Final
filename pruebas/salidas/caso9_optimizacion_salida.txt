@@ -1,0 +1,170 @@
+
+===============================================
+  CODIGO FUENTE
+===============================================
+  1 | int resultado = 2 + 3;
+  2 | int x = 10;
+  3 | int y = x * 1 + 0;
+  4 | float area = 3.5 * 2 * x;
+  5 | int z = (4 * 5) + (x - 0);
+
+===============================================
+  1. ANALISIS LEXICO
+===============================================
+--------TOKENS ENCONTRADOS---------
+<PALABRA_CLAVE, int>  (linea 1, col 1)
+<IDENTIFICADOR, resultado>  (linea 1, col 5)
+<ASIGNACION, =>  (linea 1, col 15)
+<LITERAL_ENTERO, 2>  (linea 1, col 17)
+<OPERADOR, +>  (linea 1, col 19)
+<LITERAL_ENTERO, 3>  (linea 1, col 21)
+<DELIMITADOR, ;>  (linea 1, col 22)
+<PALABRA_CLAVE, int>  (linea 2, col 1)
+<IDENTIFICADOR, x>  (linea 2, col 5)
+<ASIGNACION, =>  (linea 2, col 7)
+<LITERAL_ENTERO, 10>  (linea 2, col 9)
+<DELIMITADOR, ;>  (linea 2, col 11)
+<PALABRA_CLAVE, int>  (linea 3, col 1)
+<IDENTIFICADOR, y>  (linea 3, col 5)
+<ASIGNACION, =>  (linea 3, col 7)
+<IDENTIFICADOR, x>  (linea 3, col 9)
+<OPERADOR, *>  (linea 3, col 11)
+<LITERAL_ENTERO, 1>  (linea 3, col 13)
+<OPERADOR, +>  (linea 3, col 15)
+<LITERAL_ENTERO, 0>  (linea 3, col 17)
+<DELIMITADOR, ;>  (linea 3, col 18)
+<PALABRA_CLAVE, float>  (linea 4, col 1)
+<IDENTIFICADOR, area>  (linea 4, col 7)
+<ASIGNACION, =>  (linea 4, col 12)
+<LITERAL_REAL, 3.5>  (linea 4, col 14)
+<OPERADOR, *>  (linea 4, col 18)
+<LITERAL_ENTERO, 2>  (linea 4, col 20)
+<OPERADOR, *>  (linea 4, col 22)
+<IDENTIFICADOR, x>  (linea 4, col 24)
+<DELIMITADOR, ;>  (linea 4, col 25)
+<PALABRA_CLAVE, int>  (linea 5, col 1)
+<IDENTIFICADOR, z>  (linea 5, col 5)
+<ASIGNACION, =>  (linea 5, col 7)
+<PAREN_IZQ, (>  (linea 5, col 9)
+<LITERAL_ENTERO, 4>  (linea 5, col 10)
+<OPERADOR, *>  (linea 5, col 12)
+<LITERAL_ENTERO, 5>  (linea 5, col 14)
+<PAREN_DER, )>  (linea 5, col 15)
+<OPERADOR, +>  (linea 5, col 17)
+<PAREN_IZQ, (>  (linea 5, col 19)
+<IDENTIFICADOR, x>  (linea 5, col 20)
+<OPERADOR, ->  (linea 5, col 22)
+<LITERAL_ENTERO, 0>  (linea 5, col 24)
+<PAREN_DER, )>  (linea 5, col 25)
+<DELIMITADOR, ;>  (linea 5, col 26)
+
+-------- ERRORES LEXICOS --------
+No se encontraron errores lexicos.
+
+===============================================
+  2. ANALISIS SINTACTICO
+===============================================
+No se encontraron errores sintacticos.
+
+Instrucciones sintacticamente correctas: 5
+
+===============================================
+  3. ANALISIS SEMANTICO
+===============================================
+No se encontraron errores semanticos.
+
+-------- TABLA DE SIMBOLOS --------
+Nombre         Tipo      Declarada en
+-----------------------------------------
+resultado      int       linea 1, col 5
+x              int       linea 2, col 5
+y              int       linea 3, col 5
+area           float     linea 4, col 7
+z              int       linea 5, col 5
+
+===============================================
+  4. CODIGO INTERMEDIO (TRES DIRECCIONES)
+===============================================
+[linea 1] resultado = ...
+   Postfija        : 2 3 +
+   Tres direcciones:
+      t1 = 2 + 3
+      resultado = t1
+
+[linea 2] x = ...
+   Postfija        : 10
+   Tres direcciones:
+      x = 10
+
+[linea 3] y = ...
+   Postfija        : x 1 * 0 +
+   Tres direcciones:
+      t2 = x * 1
+      t3 = t2 + 0
+      y = t3
+
+[linea 4] area = ...
+   Postfija        : 3.5 2 * x *
+   Tres direcciones:
+      t4 = 3.5 * 2
+      t5 = t4 * x
+      area = t5
+
+[linea 5] z = ...
+   Postfija        : 4 5 * x 0 - +
+   Tres direcciones:
+      t6 = 4 * 5
+      t7 = x - 0
+      t8 = t6 + t7
+      z = t8
+
+
+===============================================
+  5. OPTIMIZACION
+===============================================
+Antes (13 instrucciones):
+   t1 = 2 + 3
+   resultado = t1
+   x = 10
+   t2 = x * 1
+   t3 = t2 + 0
+   y = t3
+   t4 = 3.5 * 2
+   t5 = t4 * x
+   area = t5
+   t6 = 4 * 5
+   t7 = x - 0
+   t8 = t6 + t7
+   z = t8
+
+Despues (5 instrucciones):
+   resultado = 5
+   x = 10
+   y = x
+   area = 7.0 * x
+   z = 20 + x
+
+Mejoras aplicadas:
+   - Plegado de constantes:     t1 = 2 + 3   ->   t1 = 5
+   - Propagacion de temporal:   t1 se reemplaza por 5 (se elimina su instruccion)
+   - Simplificacion algebraica: t2 = x * 1   ->   t2 = x
+   - Propagacion de temporal:   t2 se reemplaza por x (se elimina su instruccion)
+   - Simplificacion algebraica: t3 = x + 0   ->   t3 = x
+   - Propagacion de temporal:   t3 se reemplaza por x (se elimina su instruccion)
+   - Plegado de constantes:     t4 = 3.5 * 2   ->   t4 = 7.0
+   - Propagacion de temporal:   t4 se reemplaza por 7.0 (se elimina su instruccion)
+   - Plegado de constantes:     t6 = 4 * 5   ->   t6 = 20
+   - Propagacion de temporal:   t6 se reemplaza por 20 (se elimina su instruccion)
+   - Simplificacion algebraica: t7 = x - 0   ->   t7 = x
+   - Propagacion de temporal:   t7 se reemplaza por x (se elimina su instruccion)
+   - Eliminacion de copia:      t5 = 7.0 * x ; area = t5   ->   area = 7.0 * x
+   - Eliminacion de copia:      t8 = 20 + x ; z = t8   ->   z = 20 + x
+
+===============================================
+  RESUMEN
+===============================================
+Errores lexicos     : 0
+Errores sintacticos : 0
+Errores semanticos  : 0
+
+Resultado: Programa compilado correctamente.

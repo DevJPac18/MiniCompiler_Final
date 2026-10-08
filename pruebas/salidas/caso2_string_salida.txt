@@ -1,0 +1,107 @@
+
+===============================================
+  CODIGO FUENTE
+===============================================
+  1 | string nombre = "Ana";
+  2 | string dato = "10.5";
+  3 | string numero = "1";
+  4 | string ciudad = "Arequipa";
+
+===============================================
+  1. ANALISIS LEXICO
+===============================================
+--------TOKENS ENCONTRADOS---------
+<PALABRA_CLAVE, string>  (linea 1, col 1)
+<IDENTIFICADOR, nombre>  (linea 1, col 8)
+<ASIGNACION, =>  (linea 1, col 15)
+<LITERAL_STRING, "Ana">  (linea 1, col 17)
+<DELIMITADOR, ;>  (linea 1, col 22)
+<PALABRA_CLAVE, string>  (linea 2, col 1)
+<IDENTIFICADOR, dato>  (linea 2, col 8)
+<ASIGNACION, =>  (linea 2, col 13)
+<LITERAL_STRING, "10.5">  (linea 2, col 15)
+<DELIMITADOR, ;>  (linea 2, col 21)
+<PALABRA_CLAVE, string>  (linea 3, col 1)
+<IDENTIFICADOR, numero>  (linea 3, col 8)
+<ASIGNACION, =>  (linea 3, col 15)
+<LITERAL_STRING, "1">  (linea 3, col 17)
+<DELIMITADOR, ;>  (linea 3, col 20)
+<PALABRA_CLAVE, string>  (linea 4, col 1)
+<IDENTIFICADOR, ciudad>  (linea 4, col 8)
+<ASIGNACION, =>  (linea 4, col 15)
+<LITERAL_STRING, "Arequipa">  (linea 4, col 17)
+<DELIMITADOR, ;>  (linea 4, col 27)
+
+-------- ERRORES LEXICOS --------
+No se encontraron errores lexicos.
+
+===============================================
+  2. ANALISIS SINTACTICO
+===============================================
+No se encontraron errores sintacticos.
+
+Instrucciones sintacticamente correctas: 4
+
+===============================================
+  3. ANALISIS SEMANTICO
+===============================================
+No se encontraron errores semanticos.
+
+-------- TABLA DE SIMBOLOS --------
+Nombre         Tipo      Declarada en
+-----------------------------------------
+nombre         string    linea 1, col 8
+dato           string    linea 2, col 8
+numero         string    linea 3, col 8
+ciudad         string    linea 4, col 8
+
+===============================================
+  4. CODIGO INTERMEDIO (TRES DIRECCIONES)
+===============================================
+[linea 1] nombre = ...
+   Postfija        : "Ana"
+   Tres direcciones:
+      nombre = "Ana"
+
+[linea 2] dato = ...
+   Postfija        : "10.5"
+   Tres direcciones:
+      dato = "10.5"
+
+[linea 3] numero = ...
+   Postfija        : "1"
+   Tres direcciones:
+      numero = "1"
+
+[linea 4] ciudad = ...
+   Postfija        : "Arequipa"
+   Tres direcciones:
+      ciudad = "Arequipa"
+
+
+===============================================
+  5. OPTIMIZACION
+===============================================
+Antes (4 instrucciones):
+   nombre = "Ana"
+   dato = "10.5"
+   numero = "1"
+   ciudad = "Arequipa"
+
+Despues (4 instrucciones):
+   nombre = "Ana"
+   dato = "10.5"
+   numero = "1"
+   ciudad = "Arequipa"
+
+Mejoras aplicadas:
+   (ninguna, el codigo ya era optimo)
+
+===============================================
+  RESUMEN
+===============================================
+Errores lexicos     : 0
+Errores sintacticos : 0
+Errores semanticos  : 0
+
+Resultado: Programa compilado correctamente.

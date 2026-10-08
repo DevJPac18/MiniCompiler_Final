@@ -1,0 +1,164 @@
+
+===============================================
+  CODIGO FUENTE
+===============================================
+  1 | int a = 4;
+  2 | int b = 6;
+  3 | int c = 2;
+  4 | int resultado = 0;
+  5 | resultado = (a + b) * c;
+  6 | int r2 = a * b + c / 2 - a;
+
+===============================================
+  1. ANALISIS LEXICO
+===============================================
+--------TOKENS ENCONTRADOS---------
+<PALABRA_CLAVE, int>  (linea 1, col 1)
+<IDENTIFICADOR, a>  (linea 1, col 5)
+<ASIGNACION, =>  (linea 1, col 7)
+<LITERAL_ENTERO, 4>  (linea 1, col 9)
+<DELIMITADOR, ;>  (linea 1, col 10)
+<PALABRA_CLAVE, int>  (linea 2, col 1)
+<IDENTIFICADOR, b>  (linea 2, col 5)
+<ASIGNACION, =>  (linea 2, col 7)
+<LITERAL_ENTERO, 6>  (linea 2, col 9)
+<DELIMITADOR, ;>  (linea 2, col 10)
+<PALABRA_CLAVE, int>  (linea 3, col 1)
+<IDENTIFICADOR, c>  (linea 3, col 5)
+<ASIGNACION, =>  (linea 3, col 7)
+<LITERAL_ENTERO, 2>  (linea 3, col 9)
+<DELIMITADOR, ;>  (linea 3, col 10)
+<PALABRA_CLAVE, int>  (linea 4, col 1)
+<IDENTIFICADOR, resultado>  (linea 4, col 5)
+<ASIGNACION, =>  (linea 4, col 15)
+<LITERAL_ENTERO, 0>  (linea 4, col 17)
+<DELIMITADOR, ;>  (linea 4, col 18)
+<IDENTIFICADOR, resultado>  (linea 5, col 1)
+<ASIGNACION, =>  (linea 5, col 11)
+<PAREN_IZQ, (>  (linea 5, col 13)
+<IDENTIFICADOR, a>  (linea 5, col 14)
+<OPERADOR, +>  (linea 5, col 16)
+<IDENTIFICADOR, b>  (linea 5, col 18)
+<PAREN_DER, )>  (linea 5, col 19)
+<OPERADOR, *>  (linea 5, col 21)
+<IDENTIFICADOR, c>  (linea 5, col 23)
+<DELIMITADOR, ;>  (linea 5, col 24)
+<PALABRA_CLAVE, int>  (linea 6, col 1)
+<IDENTIFICADOR, r2>  (linea 6, col 5)
+<ASIGNACION, =>  (linea 6, col 8)
+<IDENTIFICADOR, a>  (linea 6, col 10)
+<OPERADOR, *>  (linea 6, col 12)
+<IDENTIFICADOR, b>  (linea 6, col 14)
+<OPERADOR, +>  (linea 6, col 16)
+<IDENTIFICADOR, c>  (linea 6, col 18)
+<OPERADOR, />  (linea 6, col 20)
+<LITERAL_ENTERO, 2>  (linea 6, col 22)
+<OPERADOR, ->  (linea 6, col 24)
+<IDENTIFICADOR, a>  (linea 6, col 26)
+<DELIMITADOR, ;>  (linea 6, col 27)
+
+-------- ERRORES LEXICOS --------
+No se encontraron errores lexicos.
+
+===============================================
+  2. ANALISIS SINTACTICO
+===============================================
+No se encontraron errores sintacticos.
+
+Instrucciones sintacticamente correctas: 6
+
+===============================================
+  3. ANALISIS SEMANTICO
+===============================================
+No se encontraron errores semanticos.
+
+-------- TABLA DE SIMBOLOS --------
+Nombre         Tipo      Declarada en
+-----------------------------------------
+a              int       linea 1, col 5
+b              int       linea 2, col 5
+c              int       linea 3, col 5
+resultado      int       linea 4, col 5
+r2             int       linea 6, col 5
+
+===============================================
+  4. CODIGO INTERMEDIO (TRES DIRECCIONES)
+===============================================
+[linea 1] a = ...
+   Postfija        : 4
+   Tres direcciones:
+      a = 4
+
+[linea 2] b = ...
+   Postfija        : 6
+   Tres direcciones:
+      b = 6
+
+[linea 3] c = ...
+   Postfija        : 2
+   Tres direcciones:
+      c = 2
+
+[linea 4] resultado = ...
+   Postfija        : 0
+   Tres direcciones:
+      resultado = 0
+
+[linea 5] resultado = ...
+   Postfija        : a b + c *
+   Tres direcciones:
+      t1 = a + b
+      t2 = t1 * c
+      resultado = t2
+
+[linea 6] r2 = ...
+   Postfija        : a b * c 2 / + a -
+   Tres direcciones:
+      t3 = a * b
+      t4 = c / 2
+      t5 = t3 + t4
+      t6 = t5 - a
+      r2 = t6
+
+
+===============================================
+  5. OPTIMIZACION
+===============================================
+Antes (12 instrucciones):
+   a = 4
+   b = 6
+   c = 2
+   resultado = 0
+   t1 = a + b
+   t2 = t1 * c
+   resultado = t2
+   t3 = a * b
+   t4 = c / 2
+   t5 = t3 + t4
+   t6 = t5 - a
+   r2 = t6
+
+Despues (10 instrucciones):
+   a = 4
+   b = 6
+   c = 2
+   resultado = 0
+   t1 = a + b
+   resultado = t1 * c
+   t3 = a * b
+   t4 = c / 2
+   t5 = t3 + t4
+   r2 = t5 - a
+
+Mejoras aplicadas:
+   - Eliminacion de copia:      t2 = t1 * c ; resultado = t2   ->   resultado = t1 * c
+   - Eliminacion de copia:      t6 = t5 - a ; r2 = t6   ->   r2 = t5 - a
+
+===============================================
+  RESUMEN
+===============================================
+Errores lexicos     : 0
+Errores sintacticos : 0
+Errores semanticos  : 0
+
+Resultado: Programa compilado correctamente.

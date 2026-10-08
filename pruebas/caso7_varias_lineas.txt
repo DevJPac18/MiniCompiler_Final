@@ -1,0 +1,6 @@
+int a = 5;
+int b = 3;
+float precio = 12.5;
+string producto = "Lapiz";
+int c = a + b;
+float total = precio * c;

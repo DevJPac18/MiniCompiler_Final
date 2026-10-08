@@ -1,0 +1,71 @@
+
+===============================================
+  CODIGO FUENTE
+===============================================
+  1 | int edad = 20;
+  2 | int edad = 30;
+
+===============================================
+  1. ANALISIS LEXICO
+===============================================
+--------TOKENS ENCONTRADOS---------
+<PALABRA_CLAVE, int>  (linea 1, col 1)
+<IDENTIFICADOR, edad>  (linea 1, col 5)
+<ASIGNACION, =>  (linea 1, col 10)
+<LITERAL_ENTERO, 20>  (linea 1, col 12)
+<DELIMITADOR, ;>  (linea 1, col 14)
+<PALABRA_CLAVE, int>  (linea 2, col 1)
+<IDENTIFICADOR, edad>  (linea 2, col 5)
+<ASIGNACION, =>  (linea 2, col 10)
+<LITERAL_ENTERO, 30>  (linea 2, col 12)
+<DELIMITADOR, ;>  (linea 2, col 14)
+
+-------- ERRORES LEXICOS --------
+No se encontraron errores lexicos.
+
+===============================================
+  2. ANALISIS SINTACTICO
+===============================================
+No se encontraron errores sintacticos.
+
+Instrucciones sintacticamente correctas: 2
+
+===============================================
+  3. ANALISIS SEMANTICO
+===============================================
+Error semantico en linea 2, columna 5: la variable 'edad' ya fue declarada en la linea 1.
+
+-------- TABLA DE SIMBOLOS --------
+Nombre         Tipo      Declarada en
+-----------------------------------------
+edad           int       linea 1, col 5
+
+===============================================
+  4. CODIGO INTERMEDIO (TRES DIRECCIONES)
+===============================================
+[linea 1] edad = ...
+   Postfija        : 20
+   Tres direcciones:
+      edad = 20
+
+
+===============================================
+  5. OPTIMIZACION
+===============================================
+Antes (1 instrucciones):
+   edad = 20
+
+Despues (1 instrucciones):
+   edad = 20
+
+Mejoras aplicadas:
+   (ninguna, el codigo ya era optimo)
+
+===============================================
+  RESUMEN
+===============================================
+Errores lexicos     : 0
+Errores sintacticos : 0
+Errores semanticos  : 1
+
+Resultado: Se encontraron 1 error(es). Se genero codigo solo para las instrucciones validas.

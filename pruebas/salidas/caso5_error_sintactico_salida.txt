@@ -1,0 +1,86 @@
+
+===============================================
+  CODIGO FUENTE
+===============================================
+  1 | int edad = 20
+  2 | float = 15.5;
+  3 | int x = (4 + 2;
+  4 | int valido = 7;
+
+===============================================
+  1. ANALISIS LEXICO
+===============================================
+--------TOKENS ENCONTRADOS---------
+<PALABRA_CLAVE, int>  (linea 1, col 1)
+<IDENTIFICADOR, edad>  (linea 1, col 5)
+<ASIGNACION, =>  (linea 1, col 10)
+<LITERAL_ENTERO, 20>  (linea 1, col 12)
+<PALABRA_CLAVE, float>  (linea 2, col 1)
+<ASIGNACION, =>  (linea 2, col 7)
+<LITERAL_REAL, 15.5>  (linea 2, col 9)
+<DELIMITADOR, ;>  (linea 2, col 13)
+<PALABRA_CLAVE, int>  (linea 3, col 1)
+<IDENTIFICADOR, x>  (linea 3, col 5)
+<ASIGNACION, =>  (linea 3, col 7)
+<PAREN_IZQ, (>  (linea 3, col 9)
+<LITERAL_ENTERO, 4>  (linea 3, col 10)
+<OPERADOR, +>  (linea 3, col 12)
+<LITERAL_ENTERO, 2>  (linea 3, col 14)
+<DELIMITADOR, ;>  (linea 3, col 15)
+<PALABRA_CLAVE, int>  (linea 4, col 1)
+<IDENTIFICADOR, valido>  (linea 4, col 5)
+<ASIGNACION, =>  (linea 4, col 12)
+<LITERAL_ENTERO, 7>  (linea 4, col 14)
+<DELIMITADOR, ;>  (linea 4, col 15)
+
+-------- ERRORES LEXICOS --------
+No se encontraron errores lexicos.
+
+===============================================
+  2. ANALISIS SINTACTICO
+===============================================
+Error sintactico en linea 1, columna 14: se esperaba ';' despues de '20'.
+Error sintactico en linea 2, columna 7: se esperaba IDENTIFICADOR, pero se encontro '='.
+Error sintactico en linea 3, columna 15: se esperaba ')', pero se encontro ';'.
+
+Instrucciones sintacticamente correctas: 1
+
+===============================================
+  3. ANALISIS SEMANTICO
+===============================================
+No se encontraron errores semanticos.
+
+-------- TABLA DE SIMBOLOS --------
+Nombre         Tipo      Declarada en
+-----------------------------------------
+valido         int       linea 4, col 5
+
+===============================================
+  4. CODIGO INTERMEDIO (TRES DIRECCIONES)
+===============================================
+[linea 4] valido = ...
+   Postfija        : 7
+   Tres direcciones:
+      valido = 7
+
+
+===============================================
+  5. OPTIMIZACION
+===============================================
+Antes (1 instrucciones):
+   valido = 7
+
+Despues (1 instrucciones):
+   valido = 7
+
+Mejoras aplicadas:
+   (ninguna, el codigo ya era optimo)
+
+===============================================
+  RESUMEN
+===============================================
+Errores lexicos     : 0
+Errores sintacticos : 3
+Errores semanticos  : 0
+
+Resultado: Se encontraron 3 error(es). Se genero codigo solo para las instrucciones validas.

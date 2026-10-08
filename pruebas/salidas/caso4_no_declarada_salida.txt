@@ -1,0 +1,81 @@
+
+===============================================
+  CODIGO FUENTE
+===============================================
+  1 | int edad = 20;
+  2 | float promedio = nota1 + 15.5;
+  3 | total = edad * 2;
+
+===============================================
+  1. ANALISIS LEXICO
+===============================================
+--------TOKENS ENCONTRADOS---------
+<PALABRA_CLAVE, int>  (linea 1, col 1)
+<IDENTIFICADOR, edad>  (linea 1, col 5)
+<ASIGNACION, =>  (linea 1, col 10)
+<LITERAL_ENTERO, 20>  (linea 1, col 12)
+<DELIMITADOR, ;>  (linea 1, col 14)
+<PALABRA_CLAVE, float>  (linea 2, col 1)
+<IDENTIFICADOR, promedio>  (linea 2, col 7)
+<ASIGNACION, =>  (linea 2, col 16)
+<IDENTIFICADOR, nota1>  (linea 2, col 18)
+<OPERADOR, +>  (linea 2, col 24)
+<LITERAL_REAL, 15.5>  (linea 2, col 26)
+<DELIMITADOR, ;>  (linea 2, col 30)
+<IDENTIFICADOR, total>  (linea 3, col 1)
+<ASIGNACION, =>  (linea 3, col 7)
+<IDENTIFICADOR, edad>  (linea 3, col 9)
+<OPERADOR, *>  (linea 3, col 14)
+<LITERAL_ENTERO, 2>  (linea 3, col 16)
+<DELIMITADOR, ;>  (linea 3, col 17)
+
+-------- ERRORES LEXICOS --------
+No se encontraron errores lexicos.
+
+===============================================
+  2. ANALISIS SINTACTICO
+===============================================
+No se encontraron errores sintacticos.
+
+Instrucciones sintacticamente correctas: 3
+
+===============================================
+  3. ANALISIS SEMANTICO
+===============================================
+Error semantico en linea 2, columna 18: la variable 'nota1' no ha sido declarada.
+Error semantico en linea 3, columna 1: no se puede asignar a 'total' porque no ha sido declarada.
+
+-------- TABLA DE SIMBOLOS --------
+Nombre         Tipo      Declarada en
+-----------------------------------------
+edad           int       linea 1, col 5
+
+===============================================
+  4. CODIGO INTERMEDIO (TRES DIRECCIONES)
+===============================================
+[linea 1] edad = ...
+   Postfija        : 20
+   Tres direcciones:
+      edad = 20
+
+
+===============================================
+  5. OPTIMIZACION
+===============================================
+Antes (1 instrucciones):
+   edad = 20
+
+Despues (1 instrucciones):
+   edad = 20
+
+Mejoras aplicadas:
+   (ninguna, el codigo ya era optimo)
+
+===============================================
+  RESUMEN
+===============================================
+Errores lexicos     : 0
+Errores sintacticos : 0
+Errores semanticos  : 2
+
+Resultado: Se encontraron 2 error(es). Se genero codigo solo para las instrucciones validas.
